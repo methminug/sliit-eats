@@ -115,6 +115,7 @@ class _ProductCardState extends State<ProductCard> {
                         context: context,
                         builder: (BuildContext context) {
                           return ProductOrderModal(
+                            productId: widget.thisProduct.id,
                             name: widget.thisProduct.name,
                             price: widget.thisProduct.unitPrice.toDouble(),
                             unitsLeft: widget.thisProduct.unitsLeft,

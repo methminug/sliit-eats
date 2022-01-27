@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_progress_hud/flutter_progress_hud.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:sliit_eats/helpers/colors.dart';
+import 'package:sliit_eats/helpers/constants.dart';
 import 'package:sliit_eats/routes/app_routes.dart';
 import 'package:sliit_eats/screens/home_screen/components/option_card.dart';
 import 'package:sliit_eats/screens/widgets/loading_screen.dart';
@@ -101,7 +102,7 @@ class _ManagementTabState extends State<ManagementTab> {
                           Navigator.pushNamed(
                               context, AppRoutes.ORDER_MANAGEMENT, arguments: {
                             'title': 'Active Orders',
-                            'completed': false
+                            'status': Constants.orderStatus[1]
                           });
                         },
                         child: Container(
@@ -118,7 +119,7 @@ class _ManagementTabState extends State<ManagementTab> {
                           Navigator.pushNamed(
                               context, AppRoutes.ORDER_MANAGEMENT, arguments: {
                             'title': 'Served Orders',
-                            'completed': true
+                            'status': Constants.orderStatus[2]
                           });
                         },
                         child: Container(

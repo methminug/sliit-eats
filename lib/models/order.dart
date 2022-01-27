@@ -5,11 +5,18 @@ class Order {
   final String productId;
   final String userId;
   final String username;
+  final String status;
   final int quantity;
-  final bool completed;
   final Timestamp createdAt;
 
-  Order( {required this.id, required this.productId, required this.userId, required this.username, required this.quantity, required this.completed, required this.createdAt});
+  Order(
+      {required this.id,
+      required this.productId,
+      required this.userId,
+      required this.username,
+      required this.quantity,
+      required this.status,
+      required this.createdAt});
 
   factory Order.fromDocumentSnapshot(dynamic doc, dynamic extraData) {
     return Order(
@@ -18,7 +25,7 @@ class Order {
       userId: doc.data()['user_id'],
       username: extraData['username'],
       quantity: doc.data()['quantity'],
-      completed: doc.data()['completed'],
+      status: doc.data()['status'],
       createdAt: doc.data()['created_at'],
     );
   }

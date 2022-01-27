@@ -5,7 +5,7 @@ import 'package:lottie/lottie.dart';
 import 'package:sliit_eats/helpers/colors.dart';
 import 'package:sliit_eats/models/user.dart';
 import 'package:sliit_eats/screens/home_screen/components/custom_tab.dart';
-import 'package:sliit_eats/screens/home_screen/tabs/active_orders.dart';
+import 'package:sliit_eats/screens/home_screen/tabs/my_orders.dart';
 import 'package:sliit_eats/screens/home_screen/tabs/browse.dart';
 import 'package:sliit_eats/screens/home_screen/tabs/management.dart';
 import 'package:sliit_eats/screens/user/profile_screen/profile_screen.dart';
@@ -25,8 +25,11 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   List<Widget> getTabs(UserModel? user) {
     List<Widget> tabs = [];
     tabs.add(CustomTab(icon: FontAwesomeIcons.home, size: 20, name: "Home"));
-    if (user!.isAdmin) tabs.add(CustomTab(icon: FontAwesomeIcons.plusCircle, size: 20, name: "Management"));
-    tabs.add(CustomTab(icon: FontAwesomeIcons.solidCalendar, size: 20, name: "My Orders"));
+    if (user!.isAdmin)
+      tabs.add(CustomTab(
+          icon: FontAwesomeIcons.plusCircle, size: 20, name: "Management"));
+    tabs.add(CustomTab(
+        icon: FontAwesomeIcons.solidCalendar, size: 20, name: "My Orders"));
     return tabs;
   }
 
@@ -34,7 +37,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     List<Widget> tabContent = [];
     tabContent.add(BrowseTab());
     if (user!.isAdmin) tabContent.add(ManagementTab());
-    tabContent.add(ActiveOrdersTab());
+    tabContent.add(MyOrdersTab());
     return tabContent;
   }
 
@@ -74,9 +77,11 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             builder: (context) {
               return FutureBuilder<UserModel?>(
                 future: readUserData(),
-                builder: (BuildContext context, AsyncSnapshot<UserModel?> snapshot) {
+                builder:
+                    (BuildContext context, AsyncSnapshot<UserModel?> snapshot) {
                   if (snapshot.hasData) {
-                    initializeTabController(snapshot.data, args['selectedTabIndex']);
+                    initializeTabController(
+                        snapshot.data, args['selectedTabIndex']);
                     return Scaffold(
                       key: _scaffoldKey,
                       endDrawerEnableOpenDragGesture: false,
@@ -125,7 +130,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                               child: Container(
                                 width: 32,
                                 height: 32,
-                                child: Image.asset("assets/images/menuIconProfile.png"),
+                                child: Image.asset(
+                                    "assets/images/menuIconProfile.png"),
                               ),
                             ),
                           )

@@ -264,6 +264,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                               context: context,
                                               builder: (BuildContext context) {
                                                 return ProductOrderModal(
+                                                  productId: thisProduct.id,
                                                   name: thisProduct.name,
                                                   price: thisProduct.unitPrice
                                                       .toDouble(),
